@@ -1,13 +1,12 @@
-'''
-Functions to search for subscriptions by keywords, billing cycle, amount, or payment status.
-'''
-
 import csv
 from tabulate import tabulate
 
 class Search:
     # Reading the CSV file and storing data
     def read_subscriptions(self, file_path):
+        """
+        Reads the subscriptions from a CSV file and returns them as a list of lists.
+        """
         subscriptions = []
         with open(file_path, mode='r') as file:
             reader = csv.reader(file)
@@ -17,6 +16,10 @@ class Search:
 
     # Process subscriptions
     def process_subscriptions(self, subscriptions):
+        """
+        Processes the raw subscriptions data to extract and organize it into a list of lists
+        where each sublist contains a username, subscription name, and payment day.
+        """
         results = []
         for subscription in subscriptions:
             username = subscription[0]
@@ -29,11 +32,18 @@ class Search:
 
     # Print results in a tabular format
     def print_results(self, results):
+        """
+        Prints the given results in a tabular format using the tabulate library.
+        """
         headers = ["Username", "Subscription Name", "Payment Day"]
         print(tabulate(results, headers, tablefmt='grid'))
 
     # Search for subscriptions by keyword or direct value
     def search_subscriptions(self, subscriptions, search_term):
+        """
+        Searches the subscriptions for a given keyword or payment day.
+        Returns a list of matching results.
+        """
         results = []
         for subscription in subscriptions:
             username = subscription[0]
@@ -47,6 +57,12 @@ class Search:
 
     # Main function
     def main(self):
+        """
+        The main function that drives the script:
+        - Reads subscriptions from a CSV file
+        - Processes and prints all subscriptions
+        - Prompts the user for a search term and prints matching subscriptions
+        """
         file_path = 'subscriptions.csv'
         subscriptions = self.read_subscriptions(file_path)
         
