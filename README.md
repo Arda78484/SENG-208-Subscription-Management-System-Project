@@ -1,8 +1,8 @@
 Before running code on terminal type:
-'''
+```
 pip install tabulate
-'''
-
+```
+------------------------------------
 This project has been created by;
 Arda ÇAM
 Baran KARA
